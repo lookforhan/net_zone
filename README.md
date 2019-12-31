@@ -10,6 +10,9 @@ SANTONASTASO et al. [1]的理论对我有很大的启发，采用双矩阵来描
 DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门位置对管网进行分区。因此，也有一定的参考价值。在本文中，分解网络的工作是参考了DEUERLEIN et al.[3]。采用了SIR 3S 软件(www.3sconsult.de)。但是该软件学习成本太高，时间太长，不予采用。
 
 ## 步骤
+功能已经实现，详细见pipe_segment.m
+该函数需要输入，link,valve数据。
+输出每个管道所属的segment flag，以及segment包含的管道ID。
 ### 建立验证案例
 采用SANTONASTASO et al. [1]中10节点管网作为验证案例。
 所需文件包括：
@@ -74,6 +77,13 @@ sum(l3)-sum(iflag1 == 2) % 单侧阀门管道个数
 :-: | :-: | :-: | :-: | :-: |:-:
 6064|2384 | 795| 1392 | 5963|4571
 1   |0.3931|0.1311|0.2296|0.9833|0.7538
+
+## MOD管网应用
+1. 对MOD管网生成对应格式的link.csv,以及valve.csv中管线部分是否一致
+其中valve.csv为随机生成。并将其变量存为MAT文件。方便以后调用。
+2. 在模拟过程中需要识别管道所属segment,以及关闭所属segment的所有管道。
+3. 进行模拟，统计数据。
+在模拟前修改EPS_net_EPANETx64PDD.m
 ## 参考文献
 [1] SANTONASTASO G F, NARDO A D, CREACO E. Dual topology for partitioning of water distribution networks considering actual valve locations[J]. Urban Water Journal, 2019, 16(7): 469–479.
 [2] DEUERLEIN J, GILBERT D, ABRAHAM E et al. A greedy scheduling of post-disaster response and restoration using pressure-driven models and graph segment analysis[C]//1st International Water Distribution System Analysis / Computing and Control in the Water Industry Joint Conference. Kingston, Canada: 2018.
