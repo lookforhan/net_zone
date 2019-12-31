@@ -43,6 +43,31 @@ DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门�
 
 ### 删除包含阀门的边（灵光一闪）
 在图中，删除包含阀门的边，则剩下的原件自动组成不同的segment，进一步考虑，可以将含有阀门的的一端断开，这样也可以生成不同网络图。
+
+## 其他准备工作
+### 阀门的比例
+1. 找到BBM-EPS.inp文件。
+2. 仅保留[PIPE]部分数据，将其余数据删除，另存为BBM-EPA-valve.txt文件。
+3. Matlab readcell 读入BBM-EPS-valve.txt文件，将分号前的数据删除。
+4. 将分号后的数据另存到文本文件data2.txt。
+5. Matlab readmatrix 从data2.txt读入数据，用矩阵形式保存。
+```Matlab
+data = readcell('BBM-EPS-valve.txt','Delimiter',';')
+data2 = data(:,2);
+writecell(data2,'data2.txt');
+data3 = readmatrix('data2.txt','Delimiter','-')；
+iflag1 = sum(data3,2) %
+numel(iflag1)%管道个数
+sum(iflag1 == 2) % 两端阀门的管道个数
+sum(l3)-sum(iflag1 == 2) % 单侧阀门管道个数
+```
+
+#### 结果
+在BPDRR文件中，阀门比例数据统计：
+管道数| 左侧阀门管道数 | 右侧阀门管道数 | 双侧阀门管道数 |阀门总数
+:-: | :-: | :-: | :-: | ：- ：
+6064|2384 | 795| 1392 | 5963
+1   |0.3931|0.1311|0.2296|0.9833
 ## 参考文献
 [1] SANTONASTASO G F, NARDO A D, CREACO E. Dual topology for partitioning of water distribution networks considering actual valve locations[J]. Urban Water Journal, 2019, 16(7): 469–479.
 [2] DEUERLEIN J, GILBERT D, ABRAHAM E et al. A greedy scheduling of post-disaster response and restoration using pressure-driven models and graph segment analysis[C]//1st International Water Distribution System Analysis / Computing and Control in the Water Industry Joint Conference. Kingston, Canada: 2018.
