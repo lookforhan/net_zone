@@ -21,6 +21,7 @@ DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门�
 1. 检查pipe.csv文件中节点与source.csv，node.csv中的节点部分是否一致。
 2. 检查pipe.csv文件中管线与valve.csv中管线部分是否一致。
 ### 建立无向图
+
 根据管线节点关系描述文件，建立无向图。
 利用Matlab graph 类。
 管线节点关系描述文件内容如下所示，三列数分别表示：管道号，起点号，以及终点号
@@ -29,8 +30,10 @@ DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门�
 1;3;5
 ===
 ### 生成邻接矩阵与关联矩阵
+
 根据pipe.csv生成邻接矩阵与关联矩阵。
-### 建立阀门位置判断矩阵，
+### 建立阀门位置判断矩阵
+
 阀门位置描述文件应如下所示：其中起点和终点列的1，表示靠近起点一端有阀门，0表示靠近终点的一端没有阀门。
 
 ===
@@ -42,6 +45,7 @@ DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门�
 状态代码分别为：0，1，2，3
 
 ### 删除包含阀门的边（灵光一闪）
+
 在图中，删除包含阀门的边，则剩下的原件自动组成不同的segment，进一步考虑，可以将含有阀门的的一端断开，这样也可以生成不同网络图。
 
 ## 其他准备工作
@@ -64,10 +68,10 @@ sum(l3)-sum(iflag1 == 2) % 单侧阀门管道个数
 
 #### 结果
 在BPDRR文件中，阀门比例数据统计：
-管道数| 左侧阀门管道数 | 右侧阀门管道数 | 双侧阀门管道数 |阀门总数
-:-: | :-: | :-: | :-: | ：- ：
-6064|2384 | 795| 1392 | 5963
-1   |0.3931|0.1311|0.2296|0.9833
+管道数| 左侧阀门管道数 | 右侧阀门管道数 | 双侧阀门管道数 |阀门总数 |有阀门总管道数
+:-: | :-: | :-: | :-: | ：- ：|：-：
+6064|2384 | 795| 1392 | 5963|4571
+1   |0.3931|0.1311|0.2296|0.9833|0.7538
 ## 参考文献
 [1] SANTONASTASO G F, NARDO A D, CREACO E. Dual topology for partitioning of water distribution networks considering actual valve locations[J]. Urban Water Journal, 2019, 16(7): 469–479.
 [2] DEUERLEIN J, GILBERT D, ABRAHAM E et al. A greedy scheduling of post-disaster response and restoration using pressure-driven models and graph segment analysis[C]//1st International Water Distribution System Analysis / Computing and Control in the Water Industry Joint Conference. Kingston, Canada: 2018.
