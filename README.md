@@ -7,7 +7,7 @@
 ## 方法与材料
 SANTONASTASO et al. [1]的理论对我有很大的启发，采用双矩阵来描述管网及阀门位置。另外，本文的案例被采用作为本文的研究案例，进行方法验证。
 
-DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门位置对管网进行分区。因此，也有一定的参考价值。
+DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门位置对管网进行分区。因此，也有一定的参考价值。在本文中，分解网络的工作是参考了DEUERLEIN et al.[3]。采用了SIR 3S 软件(www.3sconsult.de)。但是该软件学习成本太高，时间太长，不予采用。
 
 ## 步骤
 ### 建立验证案例
@@ -40,6 +40,10 @@ DEUERLEIN et al.[2]论文中也考虑了阀门位置的影响，并根据阀门�
 
 因此，每个管道有四个状态：无阀门，靠近起点有阀门，靠近终点有阀门，以及两端均有阀门。
 状态代码分别为：0，1，2，3
+
+### 删除包含阀门的边（灵光一闪）
+在图中，删除包含阀门的边，则剩下的原件自动组成不同的segment，进一步考虑，可以将含有阀门的的一端断开，这样也可以生成不同网络图。
 ## 参考文献
 [1] SANTONASTASO G F, NARDO A D, CREACO E. Dual topology for partitioning of water distribution networks considering actual valve locations[J]. Urban Water Journal, 2019, 16(7): 469–479.
 [2] DEUERLEIN J, GILBERT D, ABRAHAM E et al. A greedy scheduling of post-disaster response and restoration using pressure-driven models and graph segment analysis[C]//1st International Water Distribution System Analysis / Computing and Control in the Water Industry Joint Conference. Kingston, Canada: 2018.
+[3] DEUERLEIN JOCHEN W. Decomposition Model of a General Water Supply Network Graph[J]. Journal of Hydraulic Engineering, 2008, 134(6): 822–832.
