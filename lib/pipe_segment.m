@@ -2,6 +2,8 @@ function [pipe_flag,pipe_segment,valve_pipe_segment,link] = pipe_segment(link,va
 %UNTITLED2 此处显示有关此函数的摘要
 %   此处显示详细说明
 link_before_zone=link;
+graph_net = graph(link.N1,link.N2);
+node_id_before = graph_net.Nodes.Name;
 for i = 1:numel(valve.V1)
     [~,Locb] = ismember(valve.pipeID{i},link.pipeID);
     if valve.V1(i) ==1
@@ -14,8 +16,11 @@ for i = 1:numel(valve.V1)
     end
 end
 
-graph_net2 = graph(link.N1,link.N2);% here is the problem !!!
-
+graph_net3 = graph(link.N1,link.N2);% here is the problem !!!
+node_id_after = graph_net3.Nodes.Name;
+lia_node = ismember(node_id_before,node_id_after);
+node_lack = node_id_before(~lia_node);
+graph_net2 = addnode(graph_net3,node_lack);
 % relocate_link = relocat_pipe(graph_net2,link);
 % figure
 % p3 = plot(graph_net2,'EdgeLabel',relocate_link.pipeID);
@@ -52,13 +57,7 @@ for m = 1:numel(pipe_valve_nameID)
     segment_flag_valve_n1(m,1) = node_segment.segment_flag(Loc_node_flag1);
     valve_N2 = link_before_zone.N2{Loc_pipe_before};
     [~,Loc_node_flag2] = ismember(valve_N2,node_segment.node_id);
-    try
     segment_flag_valve_n2(m,1) = node_segment.segment_flag(Loc_node_flag2);
-    catch
-        m
-        Loc_node_flag2
-        keyboard
-    end
      [~,Loc_pipe_after] = ismember(pipe_valve_nameID{m},link.pipeID);
     valve_after_N1 = link.N1{Loc_pipe_after};
     [~,Loc_node_flag3] = ismember(valve_after_N1,node_segment.node_id);
