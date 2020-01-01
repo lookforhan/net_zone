@@ -4,3 +4,9 @@
 *.ptx
 *.cubin
 *.fatbin
+mod_segment.mat
+examples/Modena/link.csv
+examples/Modena/MOD.txt
+examples/Modena/MOD_temp.inp
+examples/Modena/MOD_temp.txt
+examples/Modena/valve.csv
