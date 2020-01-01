@@ -14,7 +14,7 @@ for i = 1:numel(valve.V1)
 end
 graph_net2 = graph(link.N1,link.N2);
 % 查询连通分量
-bins_segment = conncomp(graph_net2)';% 对这个命令理解错误。这里错了。
+bins_segment = conncomp(graph_net2)';% % this is right! somewhere below is wrong!
 % 连通分区的个数
 bins_uniq = unique(bins_segment);
 segment_num = numel(bins_uniq);
