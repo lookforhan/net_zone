@@ -12,9 +12,9 @@ for i = 1:numel(valve.V1)
         link.N2{Locb} = New_node_id;% 修改连接
     end
 end
-graph_net2 = graph(link.N1,link.N2);
+graph_net2 = graph(link.N1,link.N2);% here is the problem !!!
 % 查询连通分量
-bins_segment = conncomp(graph_net2)';% % this is right! somewhere below is wrong!
+bins_segment = conncomp(graph_net2)';% % this is right! 
 % 连通分区的个数
 bins_uniq = unique(bins_segment);
 segment_num = numel(bins_uniq);
