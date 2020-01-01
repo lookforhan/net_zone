@@ -84,6 +84,14 @@ sum(l3)-sum(iflag1 == 2) % 单侧阀门管道个数
 2. 在模拟过程中需要识别管道所属segment,以及关闭所属segment的所有管道。
 3. 进行模拟，统计数据。
 在模拟前修改EPS_net_EPANETx64PDD.m
+### 出现问题
+1. 隔离时间不对，当前隔离时间为固定的0.5小时；应当根据需要隔离的管道数确定。（未解决）
+2. 回复没有达到1，猜测可能是是因为某些管道没有重新打开。（未解决）
+3. 单侧阀门的隔离管道，应当既属于一个分区，又属于另一个分区，即两个分区都需要隔离该管道。
+同样双侧阀门的管道应当属于三个分区。（解决）
+
+## 问题查证 20200101 10:47
+果然出错了，在pipe_segment.m中，将管道分区的函数不对。管道编号与节点对没有对应上。（解决）幸好计算结果有明显的错误，否则我会遗漏掉这些错误。
 ## 参考文献
 [1] SANTONASTASO G F, NARDO A D, CREACO E. Dual topology for partitioning of water distribution networks considering actual valve locations[J]. Urban Water Journal, 2019, 16(7): 469–479.
 [2] DEUERLEIN J, GILBERT D, ABRAHAM E et al. A greedy scheduling of post-disaster response and restoration using pressure-driven models and graph segment analysis[C]//1st International Water Distribution System Analysis / Computing and Control in the Water Industry Joint Conference. Kingston, Canada: 2018.

@@ -7,7 +7,7 @@ N2 = net.NodesConnectingLinksID(:,2);
 net.delete
 link = cell2table([pipeID,N1,N2],'VariableNames',{'pipeID','N1','N2'});
 writetable(link,'.\examples\Modena\link.csv');
-
+rng(10) 
 % ·§ÃÅ×¼±¸
 pipe_num = numel(pipeID) ;
 pipe2v_num = floor(pipe_num*0.2296);
@@ -43,6 +43,6 @@ valve.V2 = v2;
 
 valve2 = struct2table(valve);
 writetable(valve2,'.\examples\Modena\valve.csv')
-[pipe_flag,segment]= pipe_segment(link,valve2);
-
-save('mod_segment','valve','link','pipe_flag','segment');
+[pipe_flag,pipe_segment,valve_pipe_segment,link] = pipe_segment(link,valve);
+segment = pipe_segment;
+ save('mod_segment','valve2','link','pipe_flag','segment','valve_pipe_segment','link');
