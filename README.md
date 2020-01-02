@@ -93,6 +93,6 @@ sum(l3)-sum(iflag1 == 2) % 单侧阀门管道个数
 ## 问题查证 20200101 10:47
 果然出错了，在pipe_segment.m中，将管道分区的函数不对。管道编号与节点对没有对应上。（解决）幸好计算结果有明显的错误，否则我会遗漏掉这些错误。
 ## 参考文献
-[1] SANTONASTASO G F, NARDO A D, CREACO E. Dual topology for partitioning of water distribution networks considering actual valve locations[J]. Urban Water Journal, 2019, 16(7): 469–479.
-[2] DEUERLEIN J, GILBERT D, ABRAHAM E et al. A greedy scheduling of post-disaster response and restoration using pressure-driven models and graph segment analysis[C]//1st International Water Distribution System Analysis / Computing and Control in the Water Industry Joint Conference. Kingston, Canada: 2018.
-[3] DEUERLEIN JOCHEN W. Decomposition Model of a General Water Supply Network Graph[J]. Journal of Hydraulic Engineering, 2008, 134(6): 822–832.
+1. SANTONASTASO G F, NARDO A D, CREACO E. Dual topology for partitioning of water distribution networks considering actual valve locations[J]. Urban Water Journal, 2019, 16(7): 469–479.
+2.  DEUERLEIN J, GILBERT D, ABRAHAM E et al. A greedy scheduling of post-disaster response and restoration using pressure-driven models and graph segment analysis[C]//1st International Water Distribution System Analysis / Computing and Control in the Water Industry Joint Conference. Kingston, Canada: 2018.
+3. DEUERLEIN JOCHEN W. Decomposition Model of a General Water Supply Network Graph[J]. Journal of Hydraulic Engineering, 2008, 134(6): 822–832.
