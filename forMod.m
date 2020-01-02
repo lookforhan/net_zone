@@ -46,3 +46,9 @@ writetable(valve2,'.\examples\Modena\valve.csv')
 [pipe_flag,pipe_segment,valve_pipe_segment,link] = pipe_segment(link,valve);
 segment = pipe_segment;
  save('mod_segment','valve2','link','pipe_flag','segment','valve_pipe_segment','link');
+% test
+check_pipe = '123';
+[~,loc] = ismember(check_pipe,link.pipeID);
+segment_flag = link.segment(loc);
+segment{segment_flag}
+valve_pipe_segment{segment_flag}
