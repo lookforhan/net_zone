@@ -1,11 +1,14 @@
 % test 
 % 不是正式的脚本，而是测试，试错的文件。
 % addpath(genpath(pwd))
+% pipe_segment 之前的文件。pipe_segment根据本文件写出来的。
+% 案例为Santonastasoetal2019。
 clear;clc;tic;
-source = readtable('source.csv','ReadVariableNames',true);
-link = readtable('pipe.csv','ReadVariableNames',true);
-node = readtable('node.csv','ReadVariableNames',true);
-valve = readtable('valve.csv','ReadVariableNames',true);
+example_file_dir = '.\examples\Santonastasoetal2019\';
+source = readtable([example_file_dir,'source.csv'],'ReadVariableNames',true);
+link = readtable([example_file_dir,'pipe.csv'],'ReadVariableNames',true);
+node = readtable([example_file_dir,'node.csv'],'ReadVariableNames',true);
+valve = readtable([example_file_dir,'valve.csv'],'ReadVariableNames',true);
 node_coordination = [3,3;...
     2,2;2,1;2,0;...
     1,2;1,1;1,0;...
