@@ -3,6 +3,8 @@
 % addpath(genpath(pwd))
 % pipe_segment 之前的文件。pipe_segment根据本文件写出来的。
 % 案例为Santonastasoetal2019。
+% addpath(genpath(pwd)) 
+% 需要lib中的函数。
 clear;clc;tic;
 example_file_dir = '.\examples\Santonastasoetal2019\';
 source = readtable([example_file_dir,'source.csv'],'ReadVariableNames',true);
