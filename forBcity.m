@@ -20,3 +20,14 @@ valve_table = struct2table(valve);
 % output
 writetable(link_table,[study_dir,'link.csv']);
 writetable(valve_table,[study_dir,'valve.csv'])
+
+% 
+link = readtable([study_dir,'link.csv'],'ReadVariableNames',true);
+valve = readtable([study_dir,'valve.csv'],'ReadVariableNames',true);
+
+id = num2cell(link.pipeID);
+id2 = cellfun(@(x) num2str(x),id,'UniformOutput',false);
+
+link.pipeID = id2;
+valve.pipeID = id2;
+% [y1,y2,y3,y4]= pipe_segment(link,valve);
